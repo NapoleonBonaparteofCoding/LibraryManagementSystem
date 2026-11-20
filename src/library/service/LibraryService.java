@@ -34,13 +34,13 @@ public class LibraryService {
 
         if (item == null) {
             throw new IllegalArgumentException(
-                "Library item cannot be null."
+                "Library item ne može biti null."
             );
         }
 
         if (findItemById(item.getId()) != null) {
             throw new IllegalArgumentException(
-                "An item with this ID already exists."
+                "Item sa ovim ID već postoji."
             );
         }
 
@@ -107,13 +107,13 @@ public class LibraryService {
 
         if (member == null) {
             throw new IllegalArgumentException(
-                "Member cannot be null."
+                "Član ne može biti null."
             );
         }
 
         if (findMemberById(member.getMemberId()) != null) {
             throw new IllegalArgumentException(
-                "A member with this ID already exists."
+                "Član sa ovim ID več postoji."
             );
         }
 
@@ -123,7 +123,7 @@ public class LibraryService {
                     .equalsIgnoreCase(member.getEmail())) {
 
                 throw new IllegalArgumentException(
-                    "A member with this email already exists."
+                    "Član sa ovim Emailom več postoji."
                 );
             }
         }
@@ -159,7 +159,7 @@ public class LibraryService {
 
         if (member == null) {
             throw new IllegalArgumentException(
-                "Member not found."
+                "Član nije pronadjen."
             );
         }
 
@@ -167,7 +167,7 @@ public class LibraryService {
 
         if (item == null) {
             throw new IllegalArgumentException(
-                "Library item not found."
+                "Stavka nije pronadjena."
             );
         }
 
@@ -271,7 +271,7 @@ public class LibraryService {
 
         if (id == null || id.isBlank()) {
             throw new IllegalArgumentException(
-                fieldName + " cannot be empty."
+                fieldName + " Ne može da bude prazno."
             );
         }
     }

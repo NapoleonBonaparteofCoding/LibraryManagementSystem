@@ -37,21 +37,21 @@ public class ConsoleUI {
     public void run() {
 
         System.out.println("=====================================");
-        System.out.println("       LIBRARY MANAGEMENT SYSTEM");
+        System.out.println("SISTEM ZA UPRAVLJANJE BIBLIOTEKOM");
         System.out.println("=====================================");
 
         while (running) {
 
             displayMenu();
 
-            int option = readInt("Choose an option: ");
+            int option = readInt("Izaberite opciju: ");
 
             try {
                 handleMenuOption(option);
 
             } catch (IllegalArgumentException | IllegalStateException e) {
 
-                System.out.println("Operation failed: " + e.getMessage());
+                System.out.println("Greška: " + e.getMessage());
             }
 
             System.out.println();
@@ -61,18 +61,18 @@ public class ConsoleUI {
     private void displayMenu() {
 
         System.out.println("-------------------------------------");
-        System.out.println("1. Display all library items");
-        System.out.println("2. Display available items");
-        System.out.println("3. Add a new book");
-        System.out.println("4. Add a new magazine");
-        System.out.println("5. Register a new member");
-        System.out.println("6. Display all members");
-        System.out.println("7. Borrow an item");
-        System.out.println("8. Return an item");
-        System.out.println("9. Display all loans");
-        System.out.println("10. Display active loans");
-        System.out.println("11. Search items by title");
-        System.out.println("12. Display overdue loans");
+        System.out.println("1. Prikaz svih stavki iz biblioteke");
+        System.out.println("2. Prikaz dostupnih stavki");
+        System.out.println("3. Dodavanje nove knjige");
+        System.out.println("4. Dodavanje novog časopisa");
+        System.out.println("5. Registracija novog člana");
+        System.out.println("6. Prikaz svih članova");
+        System.out.println("7. Pozajmljivanje stavke");
+        System.out.println("8. Vraćanje stavke");
+        System.out.println("9. Prikaz svih pozajmica");
+        System.out.println("10. Prikaz aktivnih pozajmica");
+        System.out.println("11. Pretraga stavki po naslovu");
+        System.out.println("12. Prikaz prekoračenih pozajmica");
         System.out.println("0. Exit");
         System.out.println("-------------------------------------");
     }
@@ -133,12 +133,12 @@ public class ConsoleUI {
 
             case 0:
                 running = false;
-                System.out.println("Thank you for using the system!");
-                System.out.println("Goodbye!");
+                System.out.println("Hvala što koristite sistem!");
+                System.out.println("Dovidjenja!");
                 break;
 
             default:
-                System.out.println("Invalid option. Please try again.");
+                System.out.println("Nevažeća opcija. Molim vas pokušajte opet.");
         }
     }
 
@@ -146,21 +146,21 @@ public class ConsoleUI {
 
     private void displayAllItems() {
 
-        System.out.println("\n--- ALL LIBRARY ITEMS ---");
+        System.out.println("\n--- SVE STAVKE U BIBLIOTECI ---");
 
         displayItems(
             libraryService.getAllItems(),
-            "No library items found."
+            "Nisu pronađene stavke u biblioteci."
         );
     }
 
     private void displayAvailableItems() {
 
-        System.out.println("\n--- AVAILABLE ITEMS ---");
+        System.out.println("\n--- DOSTUPNE STAVKE ---");
 
         displayItems(
             libraryService.getAvailableItems(),
-            "No available items found."
+            "Nisu pronađene dostupne stavke."
         );
     }
 
@@ -183,12 +183,12 @@ public class ConsoleUI {
 
     private void addBook() {
 
-        System.out.println("\n--- ADD A NEW BOOK ---");
+        System.out.println("\n--- DODAJ NOVU KNJIGU ---");
 
         String id = readLine("Book ID: ");
-        String title = readLine("Title: ");
-        int year = readInt("Publication year: ");
-        String author = readLine("Author: ");
+        String title = readLine("Naslov: ");
+        int year = readInt("Godina izdavanja: ");
+        String author = readLine("Autor: ");
         String isbn = readLine("ISBN: ");
 
         Book book = new Book(
@@ -201,20 +201,20 @@ public class ConsoleUI {
 
         libraryService.addItem(book);
 
-        System.out.println("Book successfully added!");
+        System.out.println("Knjiga je uspešno dodana!");
     }
 
     // Add magazine
 
     private void addMagazine() {
 
-        System.out.println("\n--- ADD A NEW MAGAZINE ---");
+        System.out.println("\n--- DODAJ NOVI MAGAZIN ---");
 
         String id = readLine("Magazine ID: ");
-        String title = readLine("Title: ");
-        int year = readInt("Publication year: ");
-        String publisher = readLine("Publisher: ");
-        int issueNumber = readInt("Issue number: ");
+        String title = readLine("Naslov: ");
+        int year = readInt("Godina izdavanja: ");
+        String publisher = readLine("Izdavač: ");
+        int issueNumber = readInt("Broj izdanja: ");
 
         Magazine magazine = new Magazine(
             id,
@@ -226,20 +226,20 @@ public class ConsoleUI {
 
         libraryService.addItem(magazine);
 
-        System.out.println("Magazine successfully added!");
+        System.out.println("Magazin je uspešno dodat!");
     }
 
     // Member management
 
     private void registerMember() {
 
-        System.out.println("\n--- REGISTER A NEW MEMBER ---");
+        System.out.println("\n--- REGISTRUJ NOVOG ČLANA ---");
 
         String id = readLine("Member ID: ");
-        String firstName = readLine("First name: ");
-        String lastName = readLine("Last name: ");
+        String firstName = readLine("Ime: ");
+        String lastName = readLine("Prezime: ");
         String email = readLine("Email: ");
-        String phone = readLine("Phone number: ");
+        String phone = readLine("Broj telefona: ");
 
         Member member = new Member(
             id,
@@ -251,17 +251,17 @@ public class ConsoleUI {
 
         libraryService.addMember(member);
 
-        System.out.println("Member successfully registered!");
+        System.out.println("Član je uspešno registrovan!");
     }
 
     private void displayAllMembers() {
 
-        System.out.println("\n--- ALL MEMBERS ---");
+        System.out.println("\n--- Svi članovi ---");
 
         List<Member> members = libraryService.getAllMembers();
 
         if (members.isEmpty()) {
-            System.out.println("No members found.");
+            System.out.println("Članovi nisu pronadjeni.");
             return;
         }
 
@@ -275,7 +275,7 @@ public class ConsoleUI {
 
     private void borrowItem() {
 
-        System.out.println("\n--- BORROW AN ITEM ---");
+        System.out.println("\n--- POZAJMI STAVKU ---");
 
         String memberId = readLine("Member ID: ");
         String itemId = readLine("Item ID: ");
@@ -286,10 +286,10 @@ public class ConsoleUI {
         );
 
         if (success) {
-            System.out.println("Item successfully borrowed!");
+            System.out.println("Stavka uspešno pozajmljena!");
         } else {
             System.out.println(
-                "Item is currently unavailable."
+                "Stavka trenutno nije dostupna."
             );
         }
     }
@@ -298,17 +298,17 @@ public class ConsoleUI {
 
     private void returnItem() {
 
-        System.out.println("\n--- RETURN AN ITEM ---");
+        System.out.println("\n--- VRATI STAVKU ---");
 
         String loanId = readLine("Loan ID: ");
 
         boolean success = libraryService.returnItem(loanId);
 
         if (success) {
-            System.out.println("Item successfully returned!");
+            System.out.println("Stavka uspešno vraćena!");
         } else {
             System.out.println(
-                "Loan not found or item has already been returned."
+                "Pozajmnica nije pronađena ili je predmet već vraćen."
             );
         }
     }
@@ -317,31 +317,31 @@ public class ConsoleUI {
 
     private void displayAllLoans() {
 
-        System.out.println("\n--- ALL LOANS ---");
+        System.out.println("\n--- SVE POZAJMNICE ---");
 
         displayLoans(
             libraryService.getAllLoans(),
-            "No loans found."
+            "Pozajmnice nisu pronadjene."
         );
     }
 
     private void displayActiveLoans() {
 
-        System.out.println("\n--- ACTIVE LOANS ---");
+        System.out.println("\n--- AKTIVNE POZAJMNICE ---");
 
         displayLoans(
             libraryService.getActiveLoans(),
-            "No active loans found."
+            "Aktivne pozajmince nisu pronadjene."
         );
     }
 
     private void displayOverdueLoans() {
 
-        System.out.println("\n--- OVERDUE LOANS ---");
+        System.out.println("\n--- POZAJMNICE SA ISTEKLIM ROKOM ---");
 
         displayLoans(
             libraryService.getOverdueLoans(),
-            "No overdue loans found."
+           "Pozajmince sa isteklim rokom nisu pronadjene."
         );
     }
 
@@ -364,22 +364,22 @@ public class ConsoleUI {
 
     private void searchItems() {
 
-        System.out.println("\n--- SEARCH ITEMS ---");
+        System.out.println("\n--- POTRAŽI STAVKE ---");
 
-        String title = readLine("Enter title to search: ");
+        String title = readLine("Unesi naslov za pretragu: ");
 
         List<LibraryItem> results =
             libraryService.searchItemsByTitle(title);
 
         if (results.isEmpty()) {
 
-            System.out.println("No matching items found.");
+            System.out.println("Nisu pronadjene odgovarjauće stavke.");
             return;
         }
 
-        System.out.println("Search results:");
+        System.out.println("Rezultati pretrage:");
 
-        displayItems(results, "No matching items found.");
+        displayItems(results, "Nisu pronadjene odgovarjauće stavke.");
     }
 
     // Input methods
@@ -405,7 +405,7 @@ public class ConsoleUI {
             } catch (NumberFormatException e) {
 
                 System.out.println(
-                    "Invalid input. Please enter a valid number."
+                    "Nevažeći unos. Molim vas unesite validan broj."
                 );
             }
         }

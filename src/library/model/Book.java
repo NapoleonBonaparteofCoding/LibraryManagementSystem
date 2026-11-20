@@ -28,7 +28,7 @@ public class Book extends LibraryItem {
     public void setAuthor(String author) {
         if (author == null || author.isBlank()) {
             throw new IllegalArgumentException(
-                "Author cannot be empty."
+                "Author ne može da bude prazan."
             );
         }
 
@@ -42,7 +42,7 @@ public class Book extends LibraryItem {
     public void setIsbn(String isbn) {
         if (isbn == null || isbn.isBlank()) {
             throw new IllegalArgumentException(
-                "ISBN cannot be empty."
+                "ISBN ne može da bude prazan."
             );
         }
 
@@ -58,13 +58,13 @@ public class Book extends LibraryItem {
 
     @Override
     public String getDetails() {
-        return "Type: " + getItemType()
+        return "Tip: " + getItemType()
                 + " | ID: " + getId()
-                + " | Title: " + getTitle()
-                + " | Author: " + author
+                + " | Naslov: " + getTitle()
+                + " | Autor: " + author
                 + " | ISBN: " + isbn
-                + " | Year: " + getPublicationYear()
+                + " | Godina izdavanja: " + getPublicationYear()
                 + " | Status: "
-                + (isAvailable() ? "Available" : "Borrowed");
+                + (isAvailable() ? "Dostupno" : "Pozajmljeno");
     }
 }

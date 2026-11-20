@@ -28,7 +28,7 @@ public class Magazine extends LibraryItem {
     public void setPublisher(String publisher) {
         if (publisher == null || publisher.isBlank()) {
             throw new IllegalArgumentException(
-                "Publisher cannot be empty."
+                "Autor ne može biti prazan."
             );
         }
 
@@ -42,7 +42,7 @@ public class Magazine extends LibraryItem {
     public void setIssueNumber(int issueNumber) {
         if (issueNumber < 1) {
             throw new IllegalArgumentException(
-                "Issue number must be greater than zero."
+                "Broj izdanja mora biti veći od 0."
             );
         }
 
@@ -58,13 +58,13 @@ public class Magazine extends LibraryItem {
 
     @Override
     public String getDetails() {
-        return "Type: " + getItemType()
+        return "Tip: " + getItemType()
                 + " | ID: " + getId()
-                + " | Title: " + getTitle()
-                + " | Publisher: " + publisher
-                + " | Issue: " + issueNumber
-                + " | Year: " + getPublicationYear()
+                + " | Naslov: " + getTitle()
+                + " | Autor: " + publisher
+                + " | Izdanje: " + issueNumber
+                + " | Godina izdavanja: " + getPublicationYear()
                 + " | Status: "
-                + (isAvailable() ? "Available" : "Borrowed");
+                + (isAvailable() ? "Dostupno" : "Pozajmljeno");
     }
 }

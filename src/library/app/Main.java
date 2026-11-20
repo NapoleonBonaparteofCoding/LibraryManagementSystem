@@ -28,17 +28,17 @@ public class Main {
 
         service.addItem(new Book(
             "B001",
-            "Clean Code",
+            "Rat i mir",
             2008,
-            "Robert C. Martin",
+            "Lav Tolstoj",
             "978-0132350884"
         ));
 
         service.addItem(new Book(
             "B002",
-            "Effective Java",
+            "Kockar",
             2018,
-            "Joshua Bloch",
+            "Fjodor Dostojevski",
             "978-0134685991"
         ));
 
@@ -46,17 +46,17 @@ public class Main {
 
         service.addItem(new Magazine(
             "M001",
-            "National Geographic",
+            "Plava grobnica",
             2024,
-            "National Geographic Partners",
+            "Milutin Bojic",
             1
         ));
 
         service.addItem(new Magazine(
             "M002",
-            "Smithsonian",
+            "Prokleta avlija",
             2023,
-            "Smithsonian Institution",
+            "Ivo Andric",
             5
         ));
 
@@ -64,18 +64,18 @@ public class Main {
 
         service.addMember(new Member(
             "U001",
-            "John",
-            "Doe",
-            "john.doe@example.com",
-            "+381641112223"
+            "Marko",
+            "Jack",
+            "marko.jack@example.com",
+            "+381606464646"
         ));
 
         service.addMember(new Member(
             "U002",
-            "Jane",
-            "Smith",
-            "jane.smith@example.com",
-            "+381641112224"
+            "Lara",
+            "Croft",
+            "lara.croft@ex0ample.com",
+            "+381678696690"
         ));
     }
 }

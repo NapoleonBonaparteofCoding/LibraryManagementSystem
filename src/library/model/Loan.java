@@ -39,7 +39,7 @@ public class Loan {
     public void setLoanId(String loanId) {
         if (loanId == null || loanId.isBlank()) {
             throw new IllegalArgumentException(
-                "Loan ID cannot be empty."
+                "Loan ID ne može da bude prazan."
             );
         }
 
@@ -53,7 +53,7 @@ public class Loan {
     public void setMember(Member member) {
         if (member == null) {
             throw new IllegalArgumentException(
-                "Member cannot be null."
+                "Član ne može biti prazan."
             );
         }
 
@@ -67,7 +67,7 @@ public class Loan {
     public void setItem(LibraryItem item) {
         if (item == null) {
             throw new IllegalArgumentException(
-                "Library item cannot be null."
+                "Library item ne može da bude null."
             );
         }
 
@@ -81,25 +81,25 @@ public class Loan {
     public void setBorrowDate(LocalDate borrowDate) {
         if (borrowDate == null) {
             throw new IllegalArgumentException(
-                "Borrow date cannot be null."
+                "Datum pozajmljivanja ne može biti null."
             );
         }
 
         if (borrowDate.isAfter(LocalDate.now())) {
             throw new IllegalArgumentException(
-                "Borrow date cannot be in the future."
+                "Datum pozajmljivanja ne može biti u budućnosti."
             );
         }
 
         if (dueDate != null && dueDate.isBefore(borrowDate)) {
             throw new IllegalArgumentException(
-                "Due date cannot be before borrow date."
+                "Rok vraćanja ne može biti pre datuma pozajmljivanja."
             );
         }
 
         if (returnDate != null && returnDate.isBefore(borrowDate)) {
             throw new IllegalArgumentException(
-                "Borrow date cannot be after return date."
+                "Datum pozajmljivanja ne može biti posle datuma vraćanja."
             );
         }
 
@@ -113,13 +113,13 @@ public class Loan {
     public void setDueDate(LocalDate dueDate) {
         if (dueDate == null) {
             throw new IllegalArgumentException(
-                "Due date cannot be null."
+                "Rok vraćanja ne može biti null."
             );
         }
 
         if (borrowDate == null || dueDate.isBefore(borrowDate)) {
             throw new IllegalArgumentException(
-                "Due date cannot be before borrow date."
+                "Rok vraćanja ne može biti pre datuma pozajmljivanja."
             );
         }
 
@@ -135,7 +135,7 @@ public class Loan {
         if (this.returnDate != null
                 && !this.returnDate.equals(returnDate)) {
             throw new IllegalStateException(
-                "A returned loan cannot be modified."
+                "Vraćena pozajmica se ne može izmeniti."
             );
         }
 
@@ -144,13 +144,13 @@ public class Loan {
             if (borrowDate == null
                     || returnDate.isBefore(borrowDate)) {
                 throw new IllegalArgumentException(
-                    "Return date cannot be before borrow date."
+                    "Datum vraćanja ne može biti pre datuma pozajmljivanja."
                 );
             }
 
             if (returnDate.isAfter(LocalDate.now())) {
                 throw new IllegalArgumentException(
-                    "Return date cannot be in the future."
+                    "Datum vraćanja ne može biti u budućnosti."
                 );
             }
         }
@@ -191,25 +191,25 @@ public class Loan {
     public String getStatus() {
 
         if (isReturned()) {
-            return "Returned";
+            return "Vraćeno";
         }
 
         if (isOverdue()) {
-            return "Overdue";
+            return "Zakasnelo";
         }
 
-        return "Active";
+        return "Aktivno";
     }
 
     @Override
     public String toString() {
         return "Loan ID: " + loanId
-                + " | Member: " + member.getFullName()
+                + " | Član: " + member.getFullName()
                 + " | Item: " + item.getTitle()
-                + " | Borrow date: " + borrowDate
-                + " | Due date: " + dueDate
-                + " | Return date: "
-                + (returnDate == null ? "Not returned" : returnDate)
+                + " | Datum pozajmljivanja: " + borrowDate
+                + " | Rok vraćanja: " + dueDate
+                + " | Datum vraćanja: "
+                + (returnDate == null ? "Nije vraćeno" : returnDate)
                 + " | Status: " + getStatus();
     }
 }

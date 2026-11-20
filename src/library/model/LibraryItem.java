@@ -24,7 +24,7 @@ public abstract class LibraryItem implements Borrowable {
     public void setId(String id) {
         if (id == null || id.isBlank()) {
             throw new IllegalArgumentException(
-                "Item ID cannot be empty."
+                "Item ID ne može da bude prazan."
             );
         }
 
@@ -38,7 +38,7 @@ public abstract class LibraryItem implements Borrowable {
     public void setTitle(String title) {
         if (title == null || title.isBlank()) {
             throw new IllegalArgumentException(
-                "Title cannot be empty."
+                "Naslov ne može da bude prazan."
             );
         }
 
@@ -52,7 +52,7 @@ public abstract class LibraryItem implements Borrowable {
     public void setPublicationYear(int publicationYear) {
         if (publicationYear < 1) {
             throw new IllegalArgumentException(
-                "Publication year must be greater than zero."
+                "Godina izdavanja mora biti veća od 0."
             );
         }
 
